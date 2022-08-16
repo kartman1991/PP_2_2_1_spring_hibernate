@@ -10,6 +10,17 @@ public class User {
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    private Long id;
 
+   @Override
+   public String toString() {
+      return "User{" +
+              "firstName='" + firstName + '\'' +
+              ", lastName='" + lastName + '\'' +
+              '}';
+   }
+
+   @OneToOne(mappedBy = "user")
+   private Car car;
+
    @Column(name = "name")
    private String firstName;
 
