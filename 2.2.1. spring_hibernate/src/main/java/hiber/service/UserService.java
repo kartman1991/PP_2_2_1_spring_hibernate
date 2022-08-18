@@ -11,5 +11,5 @@ public interface UserService {
 
     void add(Car car);
 
-    void getUserOwner(Car car);
+    User getUserOwner(String model, String series);
 }

@@ -4,21 +4,24 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "car")
-public class Car implements Serializable {
+@Table(name = "cars")
+public class Car {
 
     @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     @OneToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
     @Column(name = "model")
     private String model;
     @Column(name = "series")
-    private int series;
+    private String series;
 
     public Car() {}
 
-    public Car(User user, String model, int series) {
+    public Car(User user, String model, String series) {
         this.user = user;
         this.model = model;
         this.series = series;
@@ -40,11 +43,20 @@ public class Car implements Serializable {
         this.model = model;
     }
 
-    public int getSeries() {
+    public String getSeries() {
         return series;
     }
 
-    public void setSeries(int series) {
+    public void setSeries(String series) {
         this.series = series;
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "user=" + user +
+                ", model='" + model + '\'' +
+                ", series=" + series +
+                '}';
     }
 }

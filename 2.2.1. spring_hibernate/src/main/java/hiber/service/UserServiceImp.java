@@ -36,7 +36,7 @@ public class UserServiceImp implements UserService {
    }
 
    @Override
-   public void getUserOwner(Car car) {
-      System.out.println(car.getUser());
+   public User getUserOwner(String model, String series) {
+      return userDao.getUserOwner(model, series);
    }
 }
